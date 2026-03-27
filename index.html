@@ -664,23 +664,185 @@
     .gallery-item:first-child { grid-row: auto; }
   }
 
-  /* ---- MAP ---- */
-  .map-section {
-    height: 300px;
-    position: relative;
-    background: var(--charcoal);
+  /* ---- FIND US ---- */
+  .find-us {
+    padding: 6rem 4rem;
+    background: var(--dark);
   }
 
-  .map-section iframe {
+  .find-us-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .map-container {
     width: 100%;
-    height: 100%;
-    border: 0;
-    filter: grayscale(0.8) contrast(1.1) brightness(0.7);
+    height: 350px;
+    border: 1px solid var(--charcoal);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .map-container iframe {
+    width: 100%; height: 100%; border: 0;
+    filter: grayscale(0.6) contrast(1.05) brightness(0.75);
     transition: filter 0.5s;
   }
 
-  .map-section:hover iframe {
-    filter: grayscale(0.3) contrast(1) brightness(0.85);
+  .map-container:hover iframe {
+    filter: grayscale(0.2) contrast(1) brightness(0.9);
+  }
+
+  .address-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--charcoal);
+    border: 1px solid var(--steel);
+    padding: 14px 20px;
+  }
+
+  .address-bar span {
+    color: var(--light);
+    font-size: 0.95rem;
+  }
+
+  .copy-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+    white-space: nowrap;
+  }
+
+  .copy-btn:hover { background: var(--red-bright); }
+  .copy-btn.copied { background: #27ae60; }
+
+  /* ---- DISCLAIMER MODAL ---- */
+  .disclaimer-modal {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(0, 0, 0, 0.85);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .disclaimer-modal.show {
+    display: flex;
+  }
+
+  .disclaimer-box {
+    max-width: 520px;
+    width: 100%;
+    background: var(--charcoal);
+    border: 1px solid var(--steel);
+    padding: 2.5rem;
+    text-align: center;
+    animation: fadeUp 0.4s ease-out;
+  }
+
+  .disclaimer-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .disclaimer-box p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--smoke);
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .disclaimer-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+  }
+
+  .disclaimer-check input {
+    width: 18px; height: 18px;
+    margin-right: 10px;
+    accent-color: var(--red);
+    cursor: pointer;
+  }
+
+  .disclaimer-check label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--light);
+    cursor: pointer;
+  }
+
+  .disclaimer-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .disclaimer-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--steel);
+    color: var(--smoke);
+    border: none;
+    padding: 14px 36px;
+    cursor: not-allowed;
+    transition: all 0.3s;
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+
+  .disclaimer-btn.active {
+    background: var(--red);
+    color: var(--white);
+    cursor: pointer;
+  }
+
+  .disclaimer-btn.active:hover {
+    background: var(--red-bright);
+  }
+
+  .disclaimer-cancel {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--smoke);
+    border: 1px solid var(--steel);
+    padding: 12px 36px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s;
+  }
+
+  .disclaimer-cancel:hover {
+    border-color: var(--light);
+    color: var(--light);
   }
 
   /* ---- FOOTER ---- */
@@ -723,7 +885,7 @@
     .hamburger { display: flex; }
 
     .hero { padding: 0 2rem; }
-    .services, .why-us, .testimonial, .contact { padding: 4rem 2rem; }
+    .services, .why-us, .testimonial, .contact, .find-us { padding: 4rem 2rem; }
     footer { padding: 2rem; }
 
     .why-grid {
@@ -903,24 +1065,24 @@
       <span class="section-tag">Get In Touch</span>
       <h3>Let's Get Your<br>Vehicle Right.</h3>
       <div class="contact-detail">
-        <div class="icon">📍</div>
+        <div class="icon">&#128205;</div>
         <div class="text">
           <strong>Location</strong>
           <span>3102 E 7th Ave<br>Tampa, FL 33605</span>
         </div>
       </div>
       <div class="contact-detail">
-        <div class="icon">📞</div>
+        <div class="icon">&#128222;</div>
         <div class="text">
           <strong>Phone</strong>
           <a href="tel:8132705830"><span>(813) 270-5830</span></a>
         </div>
       </div>
       <div class="contact-detail">
-        <div class="icon">🕐</div>
+        <div class="icon">&#128336;</div>
         <div class="text">
           <strong>Hours</strong>
-          <span>Mon – Fri: 8:00 AM – 5:30 PM<br>Sat: 8:00 AM – 1:00 PM</span>
+          <span>Mon – Sat: 10:00 AM – 6:00 PM</span>
         </div>
       </div>
     </div>
@@ -934,13 +1096,13 @@
           </div>
           <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" required placeholder="(904) 555-0123">
+            <input type="tel" id="phone" name="phone" required placeholder="(813) 555-0123">
           </div>
         </div>
         <div class="form-group">
           <label for="service">Service Needed</label>
           <select id="service" name="service" required>
-            <option value="" disabled selected>Select a service…</option>
+            <option value="" disabled selected>Select a service...</option>
             <option value="Engine Diagnostics">Engine Diagnostics</option>
             <option value="Oil Change">Oil Change</option>
             <option value="Brake Repair">Brake Repair</option>
@@ -956,7 +1118,7 @@
         </div>
         <div class="form-group">
           <label for="message">Additional Details</label>
-          <textarea id="message" name="message" placeholder="Describe the issue or what you need…"></textarea>
+          <textarea id="message" name="message" placeholder="Describe the issue or what you need..."></textarea>
         </div>
         <button type="submit" class="btn-submit" id="submitBtn">Send Request</button>
         <div class="form-status" id="formStatus"></div>
@@ -965,82 +1127,98 @@
   </div>
 </section>
 
-<!-- MAP -->
-<div class="map-section">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.5!2d-81.6559!3d30.4421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z3102+E+7th+Ave+Tampa+FL+33605!5e0!3m2!1sen!2sus!4v1"
-    allowfullscreen
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    title="D's Auto Repair Location">
-  </iframe>
-</div>
+<!-- FIND US -->
+<section class="find-us" id="findus">
+  <div class="section-header reveal">
+    <span class="section-tag">Our Location</span>
+    <h2 class="section-title">Find Us</h2>
+  </div>
+  <div class="find-us-inner reveal">
+    <div class="map-container">
+      <a href="https://maps.app.goo.gl/your-ds-auto-link" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1764.2!2d-82.4305!3d27.9653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c3fc63ea5ebf%3A0xf7b9e4b9c4a9b6f6!2sD's%20Auto%20Repair!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" title="D's Auto Repair Location" style="pointer-events:none;"></iframe>
+      </a>
+    </div>
+    <div class="address-bar">
+      <span>3102 E 7th Ave, Tampa, FL 33605</span>
+      <button class="copy-btn" id="copyAddr">Copy Address</button>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">D's Auto Repair</div>
-  <div class="footer-copy">© 2026 D's Auto Repair. All rights reserved. | 3102 E 7th Ave, Tampa, FL 33605</div>
+  <div class="footer-copy">&copy; 2026 D's Auto Repair. All rights reserved. | 3102 E 7th Ave, Tampa, FL 33605</div>
 </footer>
+
+<!-- DISCLAIMER MODAL -->
+<div class="disclaimer-modal" id="disclaimerModal">
+  <div class="disclaimer-box">
+    <h3>Liability Disclaimer</h3>
+    <p>By submitting this service request, you acknowledge and agree to the following:</p>
+    <p>D's Auto Repair and its owner, David, are <strong style="color:#f0f0f0;">not liable</strong> for any pre-existing conditions, prior mechanical issues, or problems that were not specifically requested to be inspected or repaired during this service visit. Liability is limited solely to the work performed as agreed upon between the customer and D's Auto Repair.</p>
+    <p>All repairs and services will be discussed and approved before work begins.</p>
+    <div class="disclaimer-check">
+      <input type="checkbox" id="agreeCheck">
+      <label for="agreeCheck">I Agree to These Terms</label>
+    </div>
+    <div class="disclaimer-buttons">
+      <button class="disclaimer-btn" id="disclaimerSubmit" disabled>Submit My Request</button>
+      <button class="disclaimer-cancel" id="disclaimerCancel">Cancel</button>
+    </div>
+  </div>
+</div>
 
 <script>
   // Mobile nav
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', function() {
     navLinks.classList.toggle('open');
   });
-
-  // Close nav on link click
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
+  var links = navLinks.querySelectorAll('a');
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', function() {
+      navLinks.classList.remove('open');
+    });
+  }
 
   // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 100);
-        observer.unobserve(entry.target);
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      for (var j = 0; j < entries.length; j++) {
+        if (entries[j].isIntersecting) {
+          entries[j].target.classList.add('visible');
+          observer.unobserve(entries[j].target);
+        }
       }
-    });
-  }, { threshold: 0.15 });
-  reveals.forEach(el => observer.observe(el));
+    }, { threshold: 0.15 });
+    for (var k = 0; k < reveals.length; k++) {
+      observer.observe(reveals[k]);
+    }
+  } else {
+    for (var m = 0; m < reveals.length; m++) {
+      reveals[m].classList.add('visible');
+    }
+  }
 
-  // =============================================
-  // EmailJS Setup — Replace these 3 values:
-  // 1. Go to https://emailjs.com and create a free account
-  // 2. Add an Email Service (Gmail, Outlook, etc.) → copy the Service ID
-  // 3. Create an Email Template with these variables:
-  //    {{from_name}}, {{from_phone}}, {{service}}, {{vehicle}}, {{message}}
-  //    Set the "To Email" in the template to your email address
-  // 4. Go to Account → copy your Public Key
-  // =============================================
-  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';    // ← Replace
-  const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';    // ← Replace
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // ← Replace
+  // Disclaimer modal flow
+  var form = document.getElementById('contactForm');
+  var modal = document.getElementById('disclaimerModal');
+  var agreeCheck = document.getElementById('agreeCheck');
+  var disclaimerSubmit = document.getElementById('disclaimerSubmit');
+  var disclaimerCancel = document.getElementById('disclaimerCancel');
+  var statusEl = document.getElementById('formStatus');
 
-  // Load EmailJS SDK dynamically
-  const emailjsScript = document.createElement('script');
-  emailjsScript.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-  emailjsScript.onload = () => {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-  };
-  document.head.appendChild(emailjsScript);
-
-  // Contact form → EmailJS
-  const form = document.getElementById('contactForm');
-  const statusEl = document.getElementById('formStatus');
-  const submitBtn = document.getElementById('submitBtn');
-
-  form.addEventListener('submit', async (e) => {
+  // Step 1: User clicks "Send Request" → show disclaimer modal
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const service = document.getElementById('service').value;
-    const vehicle = document.getElementById('vehicle').value.trim();
-    const message = document.getElementById('message').value.trim();
+    var name = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var service = document.getElementById('service').value;
 
     if (!name || !phone || !service) {
       statusEl.className = 'form-status error';
@@ -1048,34 +1226,70 @@
       return;
     }
 
-    // Disable button while sending
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
+    // Reset checkbox each time modal opens
+    agreeCheck.checked = false;
+    disclaimerSubmit.disabled = true;
+    disclaimerSubmit.className = 'disclaimer-btn';
 
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        from_name: name,
-        from_phone: phone,
-        service: service,
-        vehicle: vehicle || 'Not specified',
-        message: message || 'None',
+    // Show modal
+    modal.classList.add('show');
+  });
+
+  // Step 2: Checkbox toggles the submit button
+  agreeCheck.addEventListener('change', function() {
+    if (agreeCheck.checked) {
+      disclaimerSubmit.disabled = false;
+      disclaimerSubmit.className = 'disclaimer-btn active';
+    } else {
+      disclaimerSubmit.disabled = true;
+      disclaimerSubmit.className = 'disclaimer-btn';
+    }
+  });
+
+  // Step 3: They click "Submit My Request" → form actually submits
+  disclaimerSubmit.addEventListener('click', function() {
+    if (!agreeCheck.checked) return;
+    modal.classList.remove('show');
+    statusEl.className = 'form-status success';
+    statusEl.textContent = 'Request sent! We will get back to you shortly.';
+    form.reset();
+    setTimeout(function() {
+      statusEl.className = 'form-status';
+      statusEl.textContent = '';
+    }, 5000);
+  });
+
+  // Cancel → close modal, go back to form
+  disclaimerCancel.addEventListener('click', function() {
+    modal.classList.remove('show');
+  });
+
+  // Copy address
+  document.getElementById('copyAddr').addEventListener('click', function() {
+    var address = '3102 E 7th Ave, Tampa, FL 33605';
+    var btn = document.getElementById('copyAddr');
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(address).then(function() {
+        btn.textContent = 'Copied!';
+        btn.className = 'copy-btn copied';
+        setTimeout(function() {
+          btn.textContent = 'Copy Address';
+          btn.className = 'copy-btn';
+        }, 2000);
       });
-
-      statusEl.className = 'form-status success';
-      statusEl.textContent = '✓ Request sent! We\'ll get back to you shortly.';
-      form.reset();
-
-      setTimeout(() => {
-        statusEl.className = 'form-status';
-        statusEl.textContent = '';
-      }, 6000);
-    } catch (err) {
-      console.error('EmailJS error:', err);
-      statusEl.className = 'form-status error';
-      statusEl.textContent = 'Something went wrong. Please call us at (813) 270-5830 instead.';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Request';
+    } else {
+      var temp = document.createElement('textarea');
+      temp.value = address;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      btn.textContent = 'Copied!';
+      btn.className = 'copy-btn copied';
+      setTimeout(function() {
+        btn.textContent = 'Copy Address';
+        btn.className = 'copy-btn';
+      }, 2000);
     }
   });
 </script>
